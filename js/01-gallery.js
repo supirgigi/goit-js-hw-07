@@ -43,9 +43,10 @@ function onGalleryElementClick(e) {
   const visible = lightboxInstance.visible();
 
   if (visible) {
-    galleryRef.addEventListener('keydown', e => {
+    galleryRef.addEventListener('keydown', function onKeyPress(e) {
       if (e.code === 'Escape') {
         lightboxInstance.close();
+        galleryRef.removeEventListener('keydown', onKeyPress);
       }
     });
   }
